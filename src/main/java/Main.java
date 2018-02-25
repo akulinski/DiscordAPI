@@ -19,6 +19,7 @@ public class Main {
         String token="NDE3MjcwODM2MzAzNjI2MjQx.DXQlSA.6YLmZm7A0nvJ4gLvSrQcTkpE0Ng";
         //swietny program
         //tomaszek świetny gość
+        //tomaszek świetny gość pl
         final Stack<User> connected=new Stack<User>();
         // See "How to get the token" below
         DiscordAPI api = Javacord.getApi(token, true);
