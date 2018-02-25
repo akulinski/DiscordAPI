@@ -1,7 +1,7 @@
 import de.btobastian.javacord.DiscordAPI;
+import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
-
 import java.util.Calendar;
 import java.util.Stack;
 
@@ -37,5 +37,14 @@ public class MessageController {
         if(message.getContent().equals("*last") && !connected.empty()){
             message.reply(connected.peek().getName());
         }
+
+        if(message.getContent().equals("*kick")){
+            kick(message.getAuthor());
+
+        }
+    }
+
+    private void kick(User user){
+
     }
 }

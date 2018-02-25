@@ -52,9 +52,11 @@ public class Main {
                 api.registerListener(new ServerJoinListener() {
                     public void onServerJoin(DiscordAPI discordAPI, Server server) {
                       Iterator<User> it= server.getMembers().iterator();
-                        System.out.println("Joind");
+                        System.out.println("Jojned");
                       while (it.hasNext()){
-                          it.next().sendMessage("someone joind",true);
+                          it.next().sendMessage("someone jojned",true);
+
+
                       }
                     }
                 });
@@ -72,10 +74,10 @@ public class Main {
                         while(it.hasNext()){
                             User tmp=it.next();
                             if(tmp.getId() != user.getId()){
-                                tmp.sendMessage(user.getName()+" joind",true);
+                                tmp.sendMessage(user.getName()+" joined",true);
                             }
                             else{
-                                user.sendMessage("You have joind "+voiceChannel.getName(),true);
+                                user.sendMessage("You have joined "+voiceChannel.getName(),true);
                             }
                         }
 
@@ -92,6 +94,7 @@ public class Main {
                             User tmp=it.next();
                             if(tmp.getId() != user.getId()){
                                 tmp.sendMessage(user.getName()+" left",true);
+
                             }
                         }
                     }
