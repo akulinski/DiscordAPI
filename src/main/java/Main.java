@@ -10,6 +10,8 @@ import de.btobastian.javacord.listener.server.ServerJoinListener;
 import de.btobastian.javacord.listener.server.ServerLeaveListener;
 import de.btobastian.javacord.listener.voice.UserJoinVoiceChannelListener;
 import de.btobastian.javacord.listener.voice.UserLeaveVoiceChannelListener;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -59,6 +61,7 @@ public class Main {
                 api.registerListener(new ServerLeaveListener() {
                     public void onServerLeave(DiscordAPI discordAPI, Server server) {
                         System.out.println("someone left");
+
                     }
                 });
 
@@ -94,6 +97,8 @@ public class Main {
                         }
                     }
                 });
+
+
 
 
             }

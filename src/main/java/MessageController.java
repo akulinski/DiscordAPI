@@ -3,6 +3,7 @@ import de.btobastian.javacord.entities.Server;
 import de.btobastian.javacord.entities.User;
 import de.btobastian.javacord.entities.message.Message;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class MessageController {
@@ -38,13 +39,40 @@ public class MessageController {
             message.reply(connected.peek().getName());
         }
 
-        if(message.getContent().equals("*kick")){
-            kick(message.getAuthor());
-
+        if(message.getContent().contains("*kick")){
+            System.out.println("kick if");
+            kick(message.getContent().substring(6));
         }
     }
 
-    private void kick(User user){
+    private void kick(String user){
+        System.out.println("kick functio");
+        findUser(user);
+    }
 
+    private Server findUser(String toFind){
+        Iterator<Server> it=this.api.getServers().iterator();
+
+        System.out.println("FINDUSER");
+
+        //Iterate over all channels
+        while (it.hasNext()){
+            Server tmp=it.next();
+            System.out.println(tmp.getName());
+            //iterate over members of channel
+            Iterator<User> userIterator= tmp.getMembers().iterator();
+            while (userIterator.hasNext()){
+                User tmpUser=userIterator.next();
+                //it user == user to kick -> return
+                System.out.println(tmpUser.getName());
+                if(tmpUser.getName().equals(toFind)){
+                    System.out.println("FOund "+tmpUser.getName());
+                    tmp.kickUser(tmpUser.getId());
+                    break;
+            }
+            }
+
+        }
+        return null;
     }
 }
