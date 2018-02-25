@@ -42,27 +42,8 @@ public class Main {
                     public void onMessageCreate(DiscordAPI api, Message message) {
                         // check the content of the message
                         // reply to the message
-                        if(message.getContent().equals("kim jest tomek")) {
-                            message.reply("Tomasz to chuj");
-
-                            }
-
-                            if(message.getContent().contains("*whois ")){
-                            String name=message.getContent().substring(7,message.getContent().length());
-                                for (User x:
-                                     api.getUsers()) {
-                                    if(x.getName().toString().equals(name)){
-                                        int year = x.getCreationDate().get(Calendar.YEAR);
-                                        int month = x.getCreationDate().get(Calendar.MONTH);
-                                        int day = x.getCreationDate().get(Calendar.DAY_OF_MONTH);
-                                        message.reply(x.getName()+" "+"Game: "+x.getGame()+" "+"Bot: "+x.isBot()+" "+"Date: "+day+"-"+month+"-"+year);
-                                    }
-                                }
-                        }
-
-                        if(message.getContent().equals("*last") && !connected.empty()){
-                            message.reply(connected.peek().getName());
-                        }
+                    MessageController msgc=new MessageController(message,api,connected);
+                    msgc.run();
 
                     }
 
