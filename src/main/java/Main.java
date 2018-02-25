@@ -61,7 +61,7 @@ public class Main {
                         }
 
                         if(message.getContent().equals("*last") && !connected.empty()){
-                            message.getAuthor().sendMessage(connected.peek().getName());
+                            message.reply(connected.peek().getName());
                         }
 
                     }
