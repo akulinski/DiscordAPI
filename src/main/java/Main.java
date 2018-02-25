@@ -14,6 +14,7 @@ import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import de.btobastian.javacord.utils.handler.voice.*;
 import de.btobastian.javacord.utils.PacketHandler;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Stack;
@@ -46,15 +47,18 @@ public class Main {
 
                             }
 
-/*                            if(message.getContent().substring(0,6).equals("*whois ")){
+                            if(message.getContent().contains("*whois ")){
                             String name=message.getContent().substring(7,message.getContent().length());
                                 for (User x:
                                      api.getUsers()) {
                                     if(x.getName().toString().equals(name)){
-                                        System.out.println(x.getName()+x.getGame()+x.isBot()+x.getCreationDate());
+                                        int year = x.getCreationDate().get(Calendar.YEAR);
+                                        int month = x.getCreationDate().get(Calendar.MONTH);
+                                        int day = x.getCreationDate().get(Calendar.DAY_OF_MONTH);
+                                        message.reply(x.getName()+" "+"Game: "+x.getGame()+" "+"Bot: "+x.isBot()+" "+"Date: "+day+"-"+month+"-"+year);
                                     }
                                 }
-                        }*/
+                        }
 
                         if(message.getContent().equals("*last") && !connected.empty()){
                             message.getAuthor().sendMessage(connected.peek().getName());
@@ -111,7 +115,6 @@ public class Main {
                         }
                     }
                 });
-
 
 
             }
