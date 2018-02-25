@@ -10,12 +10,6 @@ import de.btobastian.javacord.listener.server.ServerJoinListener;
 import de.btobastian.javacord.listener.server.ServerLeaveListener;
 import de.btobastian.javacord.listener.voice.UserJoinVoiceChannelListener;
 import de.btobastian.javacord.listener.voice.UserLeaveVoiceChannelListener;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-import de.btobastian.javacord.utils.handler.voice.*;
-import de.btobastian.javacord.utils.PacketHandler;
-
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -24,7 +18,7 @@ public class Main {
 
         String token="NDE3MjcwODM2MzAzNjI2MjQx.DXQlSA.6YLmZm7A0nvJ4gLvSrQcTkpE0Ng";
         //swietny program
-
+        //tomaszek świetny gość
         final Stack<User> connected=new Stack<User>();
         // See "How to get the token" below
         DiscordAPI api = Javacord.getApi(token, true);
