@@ -11,6 +11,8 @@ import de.btobastian.javacord.listener.server.ServerLeaveListener;
 import de.btobastian.javacord.listener.voice.UserJoinVoiceChannelListener;
 import de.btobastian.javacord.listener.voice.UserLeaveVoiceChannelListener;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import de.btobastian.javacord.utils.handler.voice.*;
+import de.btobastian.javacord.utils.PacketHandler;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,9 +21,10 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args)  {
 
-        String token="";
+        String token="NDE3MjcwODM2MzAzNjI2MjQx.DXQlSA.6YLmZm7A0nvJ4gLvSrQcTkpE0Ng";
 
 
+        final Stack<User> connected=new Stack<User>();
         // See "How to get the token" below
         DiscordAPI api = Javacord.getApi(token, true);
         // connect
@@ -43,7 +46,7 @@ public class Main {
 
                             }
 
-                            if(message.getContent().substring(0,6).equals("*whois ")){
+/*                            if(message.getContent().substring(0,6).equals("*whois ")){
                             String name=message.getContent().substring(7,message.getContent().length());
                                 for (User x:
                                      api.getUsers()) {
@@ -51,12 +54,13 @@ public class Main {
                                         System.out.println(x.getName()+x.getGame()+x.isBot()+x.getCreationDate());
                                     }
                                 }
+                        }*/
+
+                        if(message.getContent().equals("*last") && !connected.empty()){
+                            message.getAuthor().sendMessage(connected.peek().getName());
                         }
 
                     }
-
-
-
 
                 });
 
@@ -89,7 +93,10 @@ public class Main {
                                 user.sendMessage("You have joind "+voiceChannel.getName(),true);
                             }
                         }
+
+                        connected.push(user);
                     }
+
                 });
 
                 api.registerListener(new UserLeaveVoiceChannelListener() {
@@ -104,6 +111,7 @@ public class Main {
                         }
                     }
                 });
+
 
 
             }
